@@ -86,10 +86,21 @@ public class Node {
 		return this.adjacents.size();
 	}
 
+	/**
+	 * restituisce la lista di tutti i nodi adiacenti
+	 * 
+	 * @return List<Node>
+	 */
 	public List<Node> getAdjacents() {
 		return adjacents;
 	}
 
+	/**
+	 * Prende in ingresso un nome di un nodo e lo cerca nei noddi adiacenti
+	 * 
+	 * @param label (nome del nodo da cercare)
+	 * @return boolean (true se lo ha trovato, false se non lo ha trovato)
+	 */
 	public boolean isTrovato(String label) {
 		for (int i = 0; i < adjacents.size(); i++) {
 			if (adjacents.get(i).getLabel().equals(label)) {

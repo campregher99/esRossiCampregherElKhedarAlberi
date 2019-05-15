@@ -68,6 +68,14 @@ public class Tree {
 		return false;
 	}
 
+	/**
+	 * Verifica se nei nodi derivanti dal nodo passato c'è o no un nodo che si
+	 * chiama come label
+	 * 
+	 * @param nodo  () (nodo di partenza)
+	 * @param label (nome del nodo da trovare)
+	 * @return boolean (true se c'è, false se non lo trova)
+	 */
 	private boolean isTrovato(Node nodo, String label) {
 		if (nodo.isTrovato(label)) {
 			return true;
@@ -75,7 +83,7 @@ public class Tree {
 			return false;
 		} else {
 			for (int i = 0; i < nodo.getNumberOfAdjacents(); i++) {
-				if(isTrovato(nodo.getAdjacents().get(i), label)) {
+				if (isTrovato(nodo.getAdjacents().get(i), label)) {
 					return true;
 				}
 			}
