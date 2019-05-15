@@ -10,18 +10,19 @@ import java.util.List;
  *
  */
 public class Node {
-	
+
 	/**
-	 * Probabilità che un nodo venga creato adiacentemente ad un nodo dato.
-	 * Nota: è importante che non valga mai 0, o la generazione casuale di alberi dà problemi.
+	 * Probabilità che un nodo venga creato adiacentemente ad un nodo dato. Nota:
+	 * è importante che non valga mai 0, o la generazione casuale di alberi dà
+	 * problemi.
 	 */
 	private static final double ADJACENCY_PERCENTAGE = 0.5;
-	
+
 	private static long idCounter = 0;
 	private long id;
 	private String label;
 	private List<Node> adjacents;
-	
+
 	/**
 	 * Costruttore.
 	 * 
@@ -32,7 +33,7 @@ public class Node {
 		this.label = _label;
 		this.adjacents = new LinkedList<Node>();
 	}
-	
+
 	/**
 	 * Aggiunge un nodo adiacente istanziando un nuovo oggetto Node.
 	 * 
@@ -41,11 +42,11 @@ public class Node {
 	public void addNewAdjacentNode(String new_label) {
 		this.adjacents.add(new Node(new_label));
 	}
-	
+
 	/**
-	 * Metodo utilizzato per la generazione casuale di alberi.
-	 * Sulla base di una certa percentuale, decide se aggiungere un nuovo nodo
-	 * come adiacente al nodo stesso, o se richiamare l'aggiunta casuale su un suo adiacente.
+	 * Metodo utilizzato per la generazione casuale di alberi. Sulla base di una
+	 * certa percentuale, decide se aggiungere un nuovo nodo come adiacente al nodo
+	 * stesso, o se richiamare l'aggiunta casuale su un suo adiacente.
 	 * 
 	 * @param new_label
 	 */
@@ -57,7 +58,7 @@ public class Node {
 			this.adjacents.get(randomAdjacentIndex).addNewRandomNode(new_label);
 		}
 	}
-	
+
 	/**
 	 * Restituisce l'etichetta del nodo.
 	 * 
@@ -66,7 +67,7 @@ public class Node {
 	public String getLabel() {
 		return this.label;
 	}
-	
+
 	/**
 	 * Restituisce l'id del nodo.
 	 * 
@@ -75,7 +76,7 @@ public class Node {
 	public long getId() {
 		return this.id;
 	}
-	
+
 	/**
 	 * Restituisce il numero di nodi adiacenti a tale nodo.
 	 * 
@@ -83,6 +84,19 @@ public class Node {
 	 */
 	public int getNumberOfAdjacents() {
 		return this.adjacents.size();
+	}
+
+	public List<Node> getAdjacents() {
+		return adjacents;
+	}
+
+	public boolean isTrovato(String label) {
+		for (int i = 0; i < adjacents.size(); i++) {
+			if (adjacents.get(i).getLabel().equals(label)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
